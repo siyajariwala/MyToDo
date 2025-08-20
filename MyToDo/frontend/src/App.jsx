@@ -18,7 +18,7 @@ function App() {
     e.preventDefault();
     if (!newTodo.trim()) return;
     try {
-      const response = await axios.post("/api/tasks", { text: newTodo });
+      const response = await axios.post(`${API_BASE_URL}/api/tasks`, { text: newTodo });
       setTodos([...todos, response.data]);
       setNewTodo("");
     } catch (error) {
@@ -28,7 +28,7 @@ function App() {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("/api/tasks");
+      const response = await axios.get(`${API_BASE_URL}/api/tasks`);
       if (Array.isArray(response.data)) {
         setTodos(response.data);
       } else {
@@ -50,7 +50,7 @@ function App() {
 
   const saveEdit = async (id) => {
     try {
-      const response = await axios.patch(`/api/tasks/${id}`, {
+      const response = await axios.patch(`${API_BASE_URL}/api/tasks/${id}`, {
         text: editedText,
       });
       setTodos(todos.map((todo) => (todo._id === id ? response.data : todo)));
@@ -62,7 +62,7 @@ function App() {
 
   const deleteTodo = async (id) => {
     try {
-      await axios.delete(`/api/tasks/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/tasks/${id}`);
       setTodos(todos.filter((todo) => todo._id !== id));
     } catch (error) {
       console.log("Error deleting todo:", error);
@@ -72,7 +72,7 @@ function App() {
   const toggleTodo = async (id) => {
     try {
       const todo = todos.find((t) => t._id === id);
-      const response = await axios.patch(`/api/tasks/${id}`, {
+      const response = await axios.patch(`${API_BASE_URL}/api/tasks/${id}`, {
         completed: !todo.completed,
       });
       setTodos(todos.map((t) => (t._id === id ? response.data : t)));
