@@ -8,7 +8,7 @@ const app=express()
 app.use(cors({
   origin: [
     "http://localhost:5173", // Local development
-    process.env.FRONTEND_URL // Production frontend URL (will be set in Render)
+   "https://my-to-do-peach.vercel.app"// Production frontend URL (will be set in Render)
   ],
   credentials: true
 }))
