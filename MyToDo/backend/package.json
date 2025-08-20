@@ -1,16 +1,18 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "type": "module",
   "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "start": "node server.js",
     "test": "jest"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "jest": {
-    
     "testEnvironment": "node"
-    
   },
   "dependencies": {
     "cors": "^2.8.5",

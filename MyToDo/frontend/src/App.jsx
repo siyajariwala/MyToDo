@@ -6,6 +6,7 @@ import { FaTrash } from "react-icons/fa6";
 import { IoClipboardOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import axios from "axios";
+import API_BASE_URL from './config.js';
 
 function App() {
   const [newTodo, setNewTodo] = useState("");

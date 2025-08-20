@@ -5,6 +5,13 @@ import taskRoutes from "./routes/task.routes.js"
 import { connectDb } from "./lib/db.js"
 dotenv.config()
 const app=express()
+app.use(cors({
+  origin: [
+    "http://localhost:5173", // Local development
+    process.env.FRONTEND_URL // Production frontend URL (will be set in Render)
+  ],
+  credentials: true
+}))
 app.use(express.json())
 app.use("/api/tasks",taskRoutes);
 const PORT=process.env.PORT || 5001
